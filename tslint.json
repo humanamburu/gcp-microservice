@@ -1,4 +1,10 @@
 {
   "extends": "tslint:latest",
-  "defaultSeverity": "error"
+  "defaultSeverity": "error",
+  "typedef": [
+    true,
+    "call-signature",
+    "parameter"
+  ],
+  "trailing-comma": true
 }
