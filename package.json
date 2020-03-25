@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/server.ts",
-    "dev": "node -r ts-node/register --inspect src/server.ts"
+    "dev": "nodemon --watch ./src/**/* -e ts,js --exec node --inspect=0.0.0.0 -r ts-node/register src/server.ts"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "nodemon": "^2.0.2",
     "redis": "^3.0.2"
   }
 }
