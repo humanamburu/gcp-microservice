@@ -34,5 +34,7 @@ spec:
               value: "3000"
             - name: REDIS_PORT
               value: "6379"
+            - name: REDIS_HOST
+              value: "redis-cluster-ip-service"
           ports:
             - containerPort: 3000
