@@ -1,11 +1,15 @@
 import express from 'express';
 import redis from 'redis';
 
-const {PORT = 3000, REDIS_PORT = 6379 } = process.env;
+const {
+  PORT = 3000,
+  REDIS_PORT = 6379,
+  REDIS_HOST = 'redis-server'
+} = process.env;
 
 const app = express();
 const rc = redis.createClient({
-  host: 'redis-server',
+  host: REDIS_HOST,
   port: Number(REDIS_PORT)
 });
 
