@@ -4,8 +4,20 @@ services:
     image: postgres
     restart: on-failure
     environment:
-      - POSTGRES_PASSWORD=dev
-      - POSTGRES_USER=dev
+      POSTGRES_PASSWORD: dev
+      POSTGRES_USER: dev
+      PGDATA: /data/postgres
+    volumes:
+      - ./postgres-data:/data/postgres
+    ports:
+      - "5432:5432"
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - 4000:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: dev@dev
+      PGADMIN_DEFAULT_PASSWORD: dev
   redis-server:
     image: 'redis'
     restart: on-failure
@@ -16,12 +28,12 @@ services:
       - "9229:9229"
     restart: on-failure
     environment:
-      - NODE_ENV=development
-      - PORT=3000
-      - REDIS_HOST=redis-server
-      - DB_USER=dev
-      - DB_PASSWORD=dev
-      - DB_HOST=postgres-server
+      NODE_ENV: development
+      PORT: 3000
+      REDIS_HOST: redis-server
+      DB_USER: dev
+      DB_PASSWORD: dev
+      DB_HOST: postgres-server
     volumes:
       - /app/node_modules
       - .:/usr/app
