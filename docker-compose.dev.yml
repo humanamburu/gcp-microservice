@@ -18,6 +18,8 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: dev@dev
       PGADMIN_DEFAULT_PASSWORD: dev
+    volumes:
+      - ./pgadmin:/var/lib/pgadmin/storage/dev_dev
   redis-server:
     image: 'redis'
     restart: on-failure
